@@ -51,6 +51,12 @@ gem 'pundit'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form'
 gem 'quiet_assets'
+
+gem 'omniauth'
+gem 'omniauth-github'
+
+gem 'figaro'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
