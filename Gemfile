@@ -56,6 +56,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 
 gem 'figaro'
+gem 'httparty'
 
 group :development, :test do
   gem 'pry-rails'

@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160629150232) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "github_id"
     t.text     "github_data"
   end
 
