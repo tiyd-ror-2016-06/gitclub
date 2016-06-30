@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
+  get "/other" => "pages#other"
+
   get "/api/activity" => "activity#feed"
 end
