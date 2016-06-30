@@ -22,18 +22,4 @@ function activityController($http, $filter) {
 
     // $http.post("/api/activity/" + e.id + "/read")
   }
-
-  this.shouldShowEvent = function(e) {
-    if (this.showRead) { return true }
-    if (!e.read) { return true }
-    return false
-  }
-
-  this.limit = 5
-
-  this.filteredResults = function() {
-    var results = $filter("filter")(this.events, this.search.q)
-
-    return results.slice(0, this.limit)
-  }
 }

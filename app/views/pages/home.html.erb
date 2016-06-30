@@ -3,30 +3,19 @@
 <div ng-controller="activityController as ac" class="well">
   <input type="text" class="form-control" ng-model="ac.search.q">
 
-  <button ng-click="ac.showRead = true" class="btn btn-default btn-sm">Show All</button>
-  <button ng-click="ac.showRead = false" class="btn btn-default btn-sm">Show Unread</button>
-
   <!-- <p>Searching for {{ac.search.filter}}</p> -->
-  <span class="label label-primary">{{ac.filteredResults().length}} / {{ac.events.length}}</span>
 
   <table class="table table-condensed table-striped table-hover">
     <thead>
       <tr>
         <th>Repo</th>
         <th>Title</th>
-        <th>Read</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="event in ac.filteredResults() | filter" ng-show="ac.shouldShowEvent(event)">
+      <tr ng-repeat="event in ac.events | filter:ac.search.q">
         <td>{{event.repo}}</td>
         <td>{{event.title}}</td>
-        <td>
-          <p ng-show="event.read">Cool!</p>
-          <button ng-click="ac.markRead(event)" ng-hide="event.read" class="btn btn-default">
-            Read
-          </button>
-        </td>
       </tr>
     </tbody>
   </table>
