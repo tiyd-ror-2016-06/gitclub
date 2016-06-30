@@ -14,6 +14,8 @@
  *= require_self
  */
 
-.red { color: red }
+.red { color: red; }
 
 .even { font-style: italic; }
+
+.active-sort { color: blue; }

@@ -6,7 +6,7 @@ activityController.$inject = ["$http", "$filter"]
 
 function activityController($http, $filter) {
   this.search = { q: "" }
-  this.showRead = false
+  this.sortColumn = "title"
 
   this.events = []
 
@@ -21,5 +21,13 @@ function activityController($http, $filter) {
     e.read = true
 
     // $http.post("/api/activity/" + e.id + "/read")
+  }
+
+  this.sortOn = function(colName) {
+    if (this.sortColumn == colName) {
+      this.sortColumn = "-" + colName
+    } else {
+      this.sortColumn = colName
+    }
   }
 }
