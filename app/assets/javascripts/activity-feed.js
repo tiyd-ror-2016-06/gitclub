@@ -25,6 +25,8 @@ var refreshFeed = function(list) {
 $(document).on("page:change", function() {
   var feedList = $("#activity-feed")
 
+  $(".asdf").text("set text from jQuery")
+
   // refreshFeed(feedList)
 
   // setInterval(function() {
