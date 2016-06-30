@@ -6,7 +6,7 @@ var refreshFeed = function(list) {
       var length = Math.min(10, data.activity.length)
 
       list.empty()
-      
+
       for (var i=0; i < length; i ++) {
         var x = data.activity[i]
 
@@ -25,9 +25,9 @@ var refreshFeed = function(list) {
 $(document).on("page:change", function() {
   var feedList = $("#activity-feed")
 
-  refreshFeed(feedList)
+  // refreshFeed(feedList)
 
-  setInterval(function() {
-    refreshFeed(feedList)
-  }, 1000)
+  // setInterval(function() {
+  //   refreshFeed(feedList)
+  // }, 1000)
 })

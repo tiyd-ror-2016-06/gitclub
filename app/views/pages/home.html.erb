@@ -1,1 +1,72 @@
 <h1>This is the Homepage</h1>
+
+<div ng-controller="activityController as ac" class="well">
+  <input type="text" class="form-control" ng-model="ac.search.q">
+
+  <button ng-click="ac.showRead = true" class="btn btn-default btn-sm">Show All</button>
+  <button ng-click="ac.showRead = false" class="btn btn-default btn-sm">Show Unread</button>
+
+  <!-- <p>Searching for {{ac.search.filter}}</p> -->
+  <span class="label label-primary">{{ac.filteredResults().length}} / {{ac.events.length}}</span>
+
+  <table class="table table-condensed table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Repo</th>
+        <th>Title</th>
+        <th>Read</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="event in ac.filteredResults() | filter" ng-show="ac.shouldShowEvent(event)">
+        <td>{{event.repo}}</td>
+        <td>{{event.title}}</td>
+        <td>
+          <p ng-show="event.read">Cool!</p>
+          <button ng-click="ac.markRead(event)" ng-hide="event.read" class="btn btn-default">
+            Read
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div ng-hide="true" ng-controller="votesController as vc" class="well">
+  <button class="btn btn-default" ng-click="vc.delta(-1)">-</button>
+  <strong ng-class="{red: vc.count > 10, even: vc.count % 2 == 0}">{{vc.count}}</strong>
+  <button class="btn btn-default" ng-click="vc.delta(1)">+</button>
+
+  <hr>
+
+  <button class="btn btn-danger" ng-click="vc.reset()">Reset</button>
+  <button class="btn btn-default" ng-click="vc.resetResets()">Reset Resets</button>
+  <table class="table table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>At</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="r in vc.pastResets | filter:vc.interesting | limitTo:5">
+        <td>{{r.from}}</td>
+        <td>{{r.at | date:"h:mm:ss" }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" ng-click="vc.remove(r)">X</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div ng-controller="homeController as h">
+  <p ng-show="h.shouldShow">Hello, {{h.thing}}</p>
+
+  <button type="submit" ng-click="h.toggle()">Toggle</button>
+</div>
+
+<div ng-controller="homeController2">
+  <p>Hello, {{thing}}</p>
+</div>
